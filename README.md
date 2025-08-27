@@ -1,63 +1,141 @@
-# 🚀 Assignment: Mastering JavaScript Fundamentals
+project/
+│── index.html
+│── style.css
+│── script.js
 
-Welcome to your next step toward JavaScript mastery! In this assignment, you'll explore essential concepts that form the backbone of interactive, dynamic web pages—functions, loops, and the Document Object Model (DOM). Ready to code like a pro? Let’s dive in.
 
----
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript Assignment</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>JavaScript Assignment Demo</h1>
 
-## 🎯 Part 1: Mastering JavaScript Basics
+  <div id="message"></div>
 
-Start with the building blocks of JavaScript—variables, data types, operators, and conditionals. You’ll write a few simple programs that capture user input, make decisions using `if/else`, and output results using `console.log()` or by modifying the webpage content.
+  <button id="greetBtn">Click for Greeting</button>
+  <button id="listBtn">Show Number List</button>
+  <button id="colorBtn">Change Background</button>
 
-**Goal:** Demonstrate your understanding of how JavaScript flows, processes logic, and interacts with data.
+  <ul id="numberList"></ul>
 
----
+  <script src="script.js"></script>
+</body>
 
-## ❤️ Part 2: JavaScript Functions — The Heart of Reusability
 
-Functions are your best friends in programming. Write a few custom functions that take inputs, process them, and return or display results. You’ll also create functions for common tasks (like calculating totals, formatting strings, or toggling content).
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  margin: 40px;
+  background-color: #f0f0f0;
+}
 
-**Goal:** Build reusable blocks of logic that make your code cleaner, smarter, and DRY (Don't Repeat Yourself).
+h1 {
+  color: #333;
+}
 
----
+button {
+  margin: 10px;
+  padding: 10px 15px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 8px;
+  border: none;
+  background-color: #4CAF50;
+  color: white;
+}
 
-## 🔁 Part 3: JavaScript Loops — Embrace the Power of Repetition!
+button:hover {
+  background-color: #45a049;
+}
 
-Use `for`, `while`, or `forEach` loops to solve repetitive tasks like iterating through arrays, generating dynamic content, or simulating simple countdowns or animations.
+#message {
+  margin: 20px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #444;
+}
 
-**Goal:** Practice controlling flow with repetition and iteration—key to working with lists, animations, and form elements.
+#numberList {
+  margin-top: 20px;
+  list-style: none;
+  padding: 0;
+}
 
----
+// =============================
+// Part 1: Variable Declarations and Conditionals
+// =============================
+let userName = "Alex";
+let userAge = 20;
 
-## 🌐 Part 4: Mastering the DOM with JavaScript
+if (userAge >= 18) {
+  console.log(userName + " is an adult.");
+} else {
+  console.log(userName + " is a minor.");
+}
 
-It’s time to bring your page to life! Use JavaScript to select elements, respond to user actions, and dynamically update the content of your web page. Tasks may include changing text, toggling classes, listening to click events, or creating elements on the fly.
+// =============================
+// Part 2: Custom Functions
+// =============================
 
-**Goal:** Show your skill in making a static HTML page interactive using pure JavaScript and DOM manipulation.
+// Function 1: Greeting Message
+function greetUser(name) {
+  return "Hello, " + name + "! Welcome to the site.";
+}
 
----
+// Function 2: Generate Number List
+function generateNumbers(limit) {
+  let numbers = [];
+  for (let i = 1; i <= limit; i++) {
+    numbers.push(i);
+  }
+  return numbers;
+}
 
-## Deliverables
+// =============================
+// Part 3: Loop Examples
+// =============================
 
-* A single project folder containing:
+// Example 1: For loop
+for (let i = 1; i <= 3; i++) {
+  console.log("For loop count: " + i);
+}
 
-  * `index.html` — your structured HTML content
-  * `style.css` — (optional) if you'd like to style your content
-  * `script.js` — your JavaScript file including:
+// Example 2: While loop
+let count = 0;
+while (count < 3) {
+  console.log("While loop count: " + count);
+  count++;
+}
 
-    * Variable declarations and conditionals (Part 1)
-    * At least 2 custom functions (Part 2)
-    * At least 2 loop examples (Part 3)
-    * At least 3 DOM interactions (Part 4)
+// =============================
+// Part 4: DOM Interactions
+// =============================
 
-Each part of the assignment should be clearly commented and organized.
+// Interaction 1: Display greeting message on button click
+document.getElementById("greetBtn").addEventListener("click", function() {
+  document.getElementById("message").innerText = greetUser(userName);
+});
 
----
+// Interaction 2: Show a list of numbers in the DOM
+document.getElementById("listBtn").addEventListener("click", function() {
+  let numbers = generateNumbers(5);
+  let listElement = document.getElementById("numberList");
+  listElement.innerHTML = ""; // clear old list
 
-## Outcome
+  numbers.forEach(function(num) {
+    let li = document.createElement("li");
+    li.textContent = "Number: " + num;
+    listElement.appendChild(li);
+  });
+});
 
-* Clear understanding of variables, conditionals, functions, loops, and DOM methods
-* Code readability and comments explaining your logic
-* Effective use of functions and loops to reduce repetition
-* DOM manipulation that improves interactivity
-* Clean structure and consistent indentation
-
+// Interaction 3: Change background color of the page
+document.getElementById("colorBtn").addEventListener("click", function() {
+  document.body.style.backgroundColor =
+    document.body.style.backgroundColor === "lightblue" ? "#f0f0f0" : "lightblue";
+});
